@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace QuiqBlog.ViewComponents
 {
-    public class FooterViewComponent : ViewComponent
+    public class NavigationViewComponent: ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

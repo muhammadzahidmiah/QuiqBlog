@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuicBlog.Data.Models;
 using QuiqBlog.Data;
 
 namespace QuiqBlog.Configuration
@@ -14,9 +15,9 @@ namespace QuiqBlog.Configuration
             servicesCollection.AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(
                         configuration.GetConnectionString("DefaultConnection")));
-            servicesCollection.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            servicesCollection.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            servicesCollection.AddControllersWithViews();
+            servicesCollection.AddControllersWithViews().AddRazorRuntimeCompilation();
             servicesCollection.AddRazorPages();
         }
     }
